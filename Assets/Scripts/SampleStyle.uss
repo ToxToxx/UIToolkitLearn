@@ -27,3 +27,11 @@
     min-width: 100%;
     -unity-font-style: bold;
 }
+
+.button_blue:hover {
+    scale: 1.1 1.1;
+}
+
+.button_blue:active {
+    background-color: rgb(73, 139, 238);
+}
