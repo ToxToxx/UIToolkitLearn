@@ -26,6 +26,8 @@
     max-width: 100%;
     min-width: 100%;
     -unity-font-style: bold;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out-elastic;
 }
 
 .button_blue:hover {
