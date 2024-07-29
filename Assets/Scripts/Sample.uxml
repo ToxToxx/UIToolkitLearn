@@ -7,15 +7,20 @@
         </ui:VisualElement>
         <ui:VisualElement style="width: 100%; height: 50%; background-color: rgb(255, 255, 255); min-width: auto; min-height: auto; max-width: initial; max-height: initial; justify-content: space-between; align-items: auto;">
             <ui:VisualElement style="flex-grow: 1; align-items: center; padding-top: 40px; padding-bottom: 40px;">
-                <ui:Label tabindex="-1" text="Lorem" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" style="font-size: 80px; -unity-font-style: bold; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 40px; padding-right: 0; padding-bottom: 40px; padding-left: 0;" />
-                <ui:Label tabindex="-1" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." parse-escape-sequences="true" display-tooltip-when-elided="true" name="Paragraph" style="font-size: 36px; flex-wrap: nowrap; white-space: normal; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-left-color: rgb(255, 0, 0); border-right-color: rgb(255, 0, 0); border-top-color: rgb(255, 0, 0); border-bottom-color: rgb(255, 0, 0); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 20px; padding-right: 80px; padding-bottom: 20px; padding-left: 80px; text-overflow: clip; -unity-text-align: upper-left;" />
+                <ui:Label tabindex="-1" text="Lorem" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="text--title" />
+                <ui:Label tabindex="-1" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." parse-escape-sequences="true" display-tooltip-when-elided="true" name="Paragraph" class="text--paragraph" />
             </ui:VisualElement>
             <ui:VisualElement style="flex-grow: 1; align-items: auto; width: 100%; max-width: 100%; min-width: 100%; justify-content: center; height: 240px; max-height: 240px; min-height: 240px; padding-left: 60px; padding-right: 60px;">
                 <ui:Button text="Button" parse-escape-sequences="true" display-tooltip-when-elided="true" class="button_blue" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Container_Bottom" style="flex-grow: 1; width: 100%; height: 100%; max-height: 100%; min-height: 100%; position: absolute;">
-            <ui:VisualElement name="Scrim" style="flex-grow: 1;" />
+            <ui:VisualElement name="Scrim" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.86); border-top-left-radius: 40px; border-top-right-radius: 0;" />
+            <ui:VisualElement name="BottomSheet" style="flex-grow: 0; height: 50%; bottom: 0; background-color: rgb(255, 255, 255); width: 100%; position: absolute; border-top-left-radius: 40px; border-top-right-radius: 40px; align-items: center; padding-top: 50px;">
+                <ui:Label tabindex="-1" text="Omnes" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--title" style="align-items: auto; align-self: center;" />
+                <ui:VisualElement style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Textures/Hyperspace%20-%20TV.png?fileID=2800000&amp;guid=9f6f61ae92ad1284ead8c51e5aab17dd&amp;type=3#Hyperspace - TV&apos;); width: 400px; height: 500px; max-height: 500px; max-width: 400px;" />
+                <ui:Label tabindex="-1" text="Lorem ipsum odor amet, consectetuer adipiscing elit." parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--paragraph" style="padding-bottom: 100px; padding-top: 100px;" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
