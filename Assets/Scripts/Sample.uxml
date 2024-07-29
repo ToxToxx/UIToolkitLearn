@@ -15,8 +15,8 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="Container_Bottom" style="flex-grow: 1; width: 100%; height: 100%; max-height: 100%; min-height: 100%; position: absolute; display: flex;">
-            <ui:VisualElement name="Scrim" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.86); border-top-left-radius: 40px; border-top-right-radius: 0;" />
-            <ui:VisualElement name="BottomSheet" style="flex-grow: 0; height: 50%; bottom: 0; background-color: rgb(255, 255, 255); width: 100%; position: absolute; border-top-left-radius: 40px; border-top-right-radius: 40px; align-items: center; padding-top: 50px;">
+            <ui:VisualElement name="Scrim" class="scrim" />
+            <ui:VisualElement name="BottomSheet" class="bottomsheet">
                 <ui:Label tabindex="-1" text="Omnes" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--title" style="align-items: auto; align-self: center;" />
                 <ui:VisualElement name="Image_Girl" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/Textures/Hyperspace%20-%20TV.png?fileID=2800000&amp;guid=9f6f61ae92ad1284ead8c51e5aab17dd&amp;type=3#Hyperspace - TV&apos;); width: 400px; height: 500px; max-height: 500px; max-width: 400px;" />
                 <ui:Label tabindex="-1" text="Lorem ipsum odor amet, consectetuer adipiscing elit." parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--paragraph" style="padding-bottom: 100px; padding-top: 100px;" />
