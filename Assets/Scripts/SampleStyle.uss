@@ -128,3 +128,17 @@
 .image--boy--inair {
     translate: -500px -400px;
 }
+
+.image--girl {
+    flex-grow: 1;
+    background-image: url('project://database/Assets/Textures/Hyperspace%20-%20TV.png?fileID=2800000&guid=9f6f61ae92ad1284ead8c51e5aab17dd&type=3#Hyperspace - TV');
+    width: 400px;
+    height: 500px;
+    max-height: 500px;
+    max-width: 400px;
+    transition-duration: 1s;
+}
+
+.image--girl--up {
+    translate: 0 -50px;
+}

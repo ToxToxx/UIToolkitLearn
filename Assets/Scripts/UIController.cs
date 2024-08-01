@@ -17,6 +17,9 @@ public class UIController : MonoBehaviour
     //spaceboy animation
     private VisualElement _spaceBoy;
 
+    //girl portrait animation
+    private VisualElement _spaceGirl;
+
     private void Start()
     {
         #region Bottom Container, Open and Close Button Logic
@@ -48,11 +51,12 @@ public class UIController : MonoBehaviour
         Invoke(nameof(AnimateBoy), .1f);
 
         #endregion
-    }
 
-    private void Update()
-    {
-        //Debug.Log(_spaceBoy.ClassListContains("image--boy--inair"));
+        #region spaceGirl Animation
+
+        _spaceGirl = root.Q<VisualElement>("Image_Girl");
+
+        #endregion
     }
 
     private void OnOpenButtonClicked(ClickEvent evt)
@@ -61,8 +65,11 @@ public class UIController : MonoBehaviour
         _bottomContainer.style.display = DisplayStyle.Flex;
 
         //play animation
-        _bottomSheet.AddToClassList("bottomsheet--up");
+        _bottomSheet.ToggleInClassList("bottomsheet--up");
         _scrim.AddToClassList("scrim--fadein");
+
+        //play spacegirl animation
+        AnimateGirl();
     }
 
     private void OnCloseButtonClicked(ClickEvent evt)
@@ -70,12 +77,21 @@ public class UIController : MonoBehaviour
         _bottomContainer.style.display = DisplayStyle.None;
 
         //making loop animation
-        _bottomSheet.RemoveFromClassList("bottomsheet--up");
+        _bottomSheet.ToggleInClassList("bottomsheet--up");
         _scrim.RemoveFromClassList("scrim--fadein");
     }
 
     private void AnimateBoy()
     {
         _spaceBoy.RemoveFromClassList("image--boy--inair");
+    }
+
+    private void AnimateGirl()
+    {
+        _spaceGirl.ToggleInClassList("image--girl--up");
+        _spaceGirl.RegisterCallback<TransitionEndEvent>
+            (
+            evt => _spaceGirl.ToggleInClassList("image--girl--up")
+            );
     }
 }
