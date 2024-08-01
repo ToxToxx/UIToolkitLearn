@@ -14,6 +14,9 @@ public class UIController : MonoBehaviour
     private VisualElement _bottomSheet;
     private VisualElement _scrim;
 
+    //spaceboy animation
+    private VisualElement _spaceBoy;
+
     private void Start()
     {
         #region Bottom Container, Open and Close Button Logic
@@ -38,6 +41,18 @@ public class UIController : MonoBehaviour
         _scrim = root.Q<VisualElement>("Scrim");
 
         #endregion
+
+        #region spaceboy Animation
+
+        _spaceBoy = root.Q<VisualElement>("Image_Spaceboy");
+        Invoke(nameof(AnimateBoy), .1f);
+
+        #endregion
+    }
+
+    private void Update()
+    {
+        //Debug.Log(_spaceBoy.ClassListContains("image--boy--inair"));
     }
 
     private void OnOpenButtonClicked(ClickEvent evt)
@@ -57,5 +72,10 @@ public class UIController : MonoBehaviour
         //making loop animation
         _bottomSheet.RemoveFromClassList("bottomsheet--up");
         _scrim.RemoveFromClassList("scrim--fadein");
+    }
+
+    private void AnimateBoy()
+    {
+        _spaceBoy.RemoveFromClassList("image--boy--inair");
     }
 }

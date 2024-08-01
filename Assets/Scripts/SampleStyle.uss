@@ -86,13 +86,13 @@
     border-top-right-radius: 40px;
     align-items: center;
     padding-top: 50px;
-    translate: 0% 100%;
+    translate: 0 100%;
     transition-timing-function: ease-out-bounce;
     transition-duration: 1s;
 }
 
 .bottomsheet--up {
-    translate: 0 0%;
+    translate: 0 0;
     transition-timing-function: ease-out-bounce;
     transition-duration: 1s;
     background-color: rgb(255, 255, 255);
@@ -109,4 +109,22 @@
 
 .scrim--fadein {
     opacity: 1;
+}
+
+.image--boy {
+    flex-grow: 1;
+    background-image: url('project://database/Assets/Textures/Hyperspace%20-%20Floating.png?fileID=2800000&guid=324d884e9bf4a8e489d599e087090c2f&type=3#Hyperspace - Floating');
+    -unity-background-scale-mode: stretch-to-fill;
+    width: 300px;
+    height: 600px;
+    min-width: 300px;
+    min-height: 600px;
+    max-width: 300px;
+    max-height: 600px;
+    transition-duration: 2s;
+    transition-timing-function: ease-out-cubic;
+}
+
+.image--boy--inair {
+    translate: -500px -400px;
 }
