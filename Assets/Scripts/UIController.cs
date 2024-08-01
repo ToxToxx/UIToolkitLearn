@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using DG.Tweening;
 
 public class UIController : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class UIController : MonoBehaviour
 
     //girl portrait animation
     private VisualElement _spaceGirl;
+
+    //message work
+    private Label _labelMessage;
 
     private void Start()
     {
@@ -42,6 +46,7 @@ public class UIController : MonoBehaviour
 
         _bottomSheet = root.Q<VisualElement>("BottomSheet");
         _scrim = root.Q<VisualElement>("Scrim");
+        _bottomSheet.RegisterCallback<TransitionEndEvent>(OnBottomSheetDown);
 
         #endregion
 
@@ -55,6 +60,12 @@ public class UIController : MonoBehaviour
         #region spaceGirl Animation
 
         _spaceGirl = root.Q<VisualElement>("Image_Girl");
+
+        #endregion
+
+        #region DOTween Animation
+
+        _labelMessage = root.Q<Label>("Message");
 
         #endregion
     }
@@ -74,11 +85,17 @@ public class UIController : MonoBehaviour
 
     private void OnCloseButtonClicked(ClickEvent evt)
     {
-        _bottomContainer.style.display = DisplayStyle.None;
-
         //making loop animation
         _bottomSheet.ToggleInClassList("bottomsheet--up");
         _scrim.RemoveFromClassList("scrim--fadein");
+    }
+
+    private void OnBottomSheetDown(TransitionEndEvent evt)
+    {
+        if (!_bottomSheet.ClassListContains("bottomsheet--up"))
+        {
+            _bottomContainer.style.display = DisplayStyle.None;
+        }
     }
 
     private void AnimateBoy()
@@ -89,9 +106,15 @@ public class UIController : MonoBehaviour
     private void AnimateGirl()
     {
         _spaceGirl.ToggleInClassList("image--girl--up");
+
         _spaceGirl.RegisterCallback<TransitionEndEvent>
             (
             evt => _spaceGirl.ToggleInClassList("image--girl--up")
             );
+        
+        //animating message
+        _labelMessage.text = string.Empty;
+        string m = "\"Lorem ipsum odor amet, consectetuer adipiscing.\"";
+        DOTween.To(() => _labelMessage.text, x => _labelMessage.text = x, m, 3f).SetEase(Ease.Linear);
     }
 }

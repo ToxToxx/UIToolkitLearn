@@ -19,7 +19,7 @@
             <ui:VisualElement name="BottomSheet" class="bottomsheet">
                 <ui:Label tabindex="-1" text="Omnes" parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--title" style="align-items: auto; align-self: center;" />
                 <ui:VisualElement name="Image_Girl" class="image--girl image--girl--up" />
-                <ui:Label tabindex="-1" text="Lorem ipsum odor amet, consectetuer adipiscing elit." parse-escape-sequences="true" display-tooltip-when-elided="true" class="text--paragraph" style="padding-bottom: 100px; padding-top: 100px;" />
+                <ui:Label tabindex="-1" text="Lorem ipsum odor amet, consectetuer adipiscing elit." parse-escape-sequences="true" display-tooltip-when-elided="true" enable-rich-text="true" name="Message" class="text--paragraph" style="padding-bottom: 100px; padding-top: 100px;" />
                 <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="Button_Close" style="position: absolute; top: auto; left: auto; right: 50px; width: 45px; height: 45px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; background-image: url(&apos;project://database/Assets/Textures/gas-kvas-com-p-krasnii-znachok-na-prozrachnom-fone-28.png?fileID=2800000&amp;guid=5d279c6bab0499845a754450938436fa&amp;type=3#gas-kvas-com-p-krasnii-znachok-na-prozrachnom-fone-28&apos;); background-color: rgba(204, 204, 204, 0);" />
             </ui:VisualElement>
         </ui:VisualElement>
