@@ -86,13 +86,13 @@
     border-top-right-radius: 40px;
     align-items: center;
     padding-top: 50px;
-    translate: 0 100%;
+    translate: 0% 100%;
     transition-timing-function: ease-out-bounce;
     transition-duration: 1s;
 }
 
 .bottomsheet--up {
-    translate: 0 0;
+    translate: 0 0%;
     transition-timing-function: ease-out-bounce;
     transition-duration: 1s;
     background-color: rgb(255, 255, 255);
