@@ -45,6 +45,7 @@ public class UIController : MonoBehaviour
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
 
+        #region root Q get elements
         _bottomContainer = root.Q<VisualElement>(CONTAINER_BOTTOM);
 
         _openButton = root.Q<Button>("Button_Open");
@@ -57,14 +58,20 @@ public class UIController : MonoBehaviour
 
         _labelMessage = root.Q<Label>(MESSAGE);
 
+        #endregion
+
         //hide all bottom sheets elements at start
         _bottomContainer.style.display = DisplayStyle.None;
 
         Invoke(nameof(AnimateBoy), .1f);
 
+        #region Register Callbacks
+
         _openButton.RegisterCallback<ClickEvent>(OnOpenButtonClicked);
         _closeButton.RegisterCallback<ClickEvent>(OnCloseButtonClicked);
         _bottomSheet.RegisterCallback<TransitionEndEvent>(OnBottomSheetDown);
+
+        #endregion
     }
 
     private void OnDisable()
