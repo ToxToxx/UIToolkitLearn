@@ -6,6 +6,22 @@ using DG.Tweening;
 
 public class UIController : MonoBehaviour
 {
+    //Const Strings root Q elements
+    private const string  CONTAINER_BOTTOM = "Container_Bottom";
+    private const string  BOTTOM_SHEET = "BottomSheet";
+    private const string  SCRIM = "Scrim";
+    private const string  IMAGE_SPACEBOY = "Image_Spaceboy";
+    private const string  IMAGE_GIRL = "Image_Girl";
+    private const string  MESSAGE = "Message";
+
+    //Const Class Names
+    private const string BOTTOMSHEET_UP = "bottomsheet--up";
+    private const string SCRIM_FADEIN = "scrim--fadein";
+    private const string IMAGE_GIRL_UP = "image--girl--up";
+    private const string IMAGE_BOY_INAIR = "image--boy--inair";
+
+
+
     //made open and close bottom sheet
     private VisualElement _bottomContainer;
     private Button _openButton;
@@ -23,51 +39,39 @@ public class UIController : MonoBehaviour
 
     //message work
     private Label _labelMessage;
+    private const string MESSAGE_TEXT = "\"Lorem ipsum odor amet, consectetuer adipiscing.\"";
 
     private void Start()
     {
-        #region Bottom Container, Open and Close Button Logic
-
         var root = GetComponent<UIDocument>().rootVisualElement;
 
-        _bottomContainer = root.Q<VisualElement>("Container_Bottom");
+        _bottomContainer = root.Q<VisualElement>(CONTAINER_BOTTOM);
 
         _openButton = root.Q<Button>("Button_Open");
         _closeButton = root.Q<Button>("Button_Close");
+
+        _bottomSheet = root.Q<VisualElement>(BOTTOM_SHEET);
+        _scrim = root.Q<VisualElement>(SCRIM);
+        _spaceBoy = root.Q<VisualElement>(IMAGE_SPACEBOY);
+        _spaceGirl = root.Q<VisualElement>(IMAGE_GIRL);
+
+        _labelMessage = root.Q<Label>(MESSAGE);
+
         //hide all bottom sheets elements at start
         _bottomContainer.style.display = DisplayStyle.None;
 
-        _openButton.RegisterCallback<ClickEvent>(OnOpenButtonClicked);
-        _closeButton.RegisterCallback<ClickEvent>(OnCloseButtonClicked);
-
-        #endregion
-
-        #region BottomSheet and Scrim Variables
-
-        _bottomSheet = root.Q<VisualElement>("BottomSheet");
-        _scrim = root.Q<VisualElement>("Scrim");
-        _bottomSheet.RegisterCallback<TransitionEndEvent>(OnBottomSheetDown);
-
-        #endregion
-
-        #region spaceboy Animation
-
-        _spaceBoy = root.Q<VisualElement>("Image_Spaceboy");
         Invoke(nameof(AnimateBoy), .1f);
 
-        #endregion
+        _openButton.RegisterCallback<ClickEvent>(OnOpenButtonClicked);
+        _closeButton.RegisterCallback<ClickEvent>(OnCloseButtonClicked);
+        _bottomSheet.RegisterCallback<TransitionEndEvent>(OnBottomSheetDown);
+    }
 
-        #region spaceGirl Animation
-
-        _spaceGirl = root.Q<VisualElement>("Image_Girl");
-
-        #endregion
-
-        #region DOTween Animation
-
-        _labelMessage = root.Q<Label>("Message");
-
-        #endregion
+    private void OnDisable()
+    {
+        _openButton.UnregisterCallback<ClickEvent>(OnOpenButtonClicked);
+        _closeButton.UnregisterCallback<ClickEvent>(OnCloseButtonClicked);
+        _bottomSheet.UnregisterCallback<TransitionEndEvent>(OnBottomSheetDown);
     }
 
     private void OnOpenButtonClicked(ClickEvent evt)
@@ -76,8 +80,8 @@ public class UIController : MonoBehaviour
         _bottomContainer.style.display = DisplayStyle.Flex;
 
         //play animation
-        _bottomSheet.ToggleInClassList("bottomsheet--up");
-        _scrim.AddToClassList("scrim--fadein");
+        _bottomSheet.ToggleInClassList(BOTTOMSHEET_UP);
+        _scrim.AddToClassList(SCRIM_FADEIN);
 
         //play spacegirl animation
         AnimateGirl();
@@ -86,13 +90,13 @@ public class UIController : MonoBehaviour
     private void OnCloseButtonClicked(ClickEvent evt)
     {
         //making loop animation
-        _bottomSheet.ToggleInClassList("bottomsheet--up");
-        _scrim.RemoveFromClassList("scrim--fadein");
+        _bottomSheet.ToggleInClassList(BOTTOMSHEET_UP);
+        _scrim.RemoveFromClassList(SCRIM_FADEIN);
     }
 
     private void OnBottomSheetDown(TransitionEndEvent evt)
     {
-        if (!_bottomSheet.ClassListContains("bottomsheet--up"))
+        if (!_bottomSheet.ClassListContains(BOTTOMSHEET_UP))
         {
             _bottomContainer.style.display = DisplayStyle.None;
         }
@@ -100,21 +104,21 @@ public class UIController : MonoBehaviour
 
     private void AnimateBoy()
     {
-        _spaceBoy.RemoveFromClassList("image--boy--inair");
+        _spaceBoy.RemoveFromClassList(IMAGE_BOY_INAIR);
     }
 
     private void AnimateGirl()
     {
-        _spaceGirl.ToggleInClassList("image--girl--up");
+        _spaceGirl.ToggleInClassList(IMAGE_GIRL_UP);
 
         _spaceGirl.RegisterCallback<TransitionEndEvent>
             (
-            evt => _spaceGirl.ToggleInClassList("image--girl--up")
+            evt => _spaceGirl.ToggleInClassList(IMAGE_GIRL_UP)
             );
         
         //animating message
         _labelMessage.text = string.Empty;
-        string m = "\"Lorem ipsum odor amet, consectetuer adipiscing.\"";
+        string m = MESSAGE_TEXT;
         DOTween.To(() => _labelMessage.text, x => _labelMessage.text = x, m, 3f).SetEase(Ease.Linear);
     }
 }
